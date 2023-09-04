@@ -32,21 +32,9 @@ function crearTarjetaEstructuraHtml(datos) {
   </div> `;
 }
 
-let tarjeta;
-let tarjetaIndividual;
 function tarjetaIndividalIteracion(tarjetaIndividual) {
   let tarjetero = "";
-  //   <img src="${datos.image}" class="card-img-top" alt="...">
-  //   <div class="card-body">
-  //     <h5 class="card-title">${datos.name}</h5>
-  //     <p class="card-text">${datos.description}.</p>
 
-  //     <div class="contain-detailes">
-  //       <h3>${datos.price}</h3>
-  //       <a href="./Assets/pages/details.html" class="btn btn-dark">details</a>
-  //     </div>
-  //   </div>
-  // </div>
   for (let tarjeta of tarjetaIndividual) {
     tarjetero = tarjetero + crearTarjetaEstructuraHtml(tarjeta);
   }
@@ -60,11 +48,6 @@ function ingresarDivsAHtml(totaldedivs, id) {
 }
 ingresarDivsAHtml(tarjeteroTotal, "html-div-tarjetas");
 
-// export default {
-//   tarjeta,
-//   tarjetaIndividual,
-//   crearTarjetaEstructuraHtml,
-//   tarjetaIndividalIteracion,
-//   ingresarDivsAHtml,
-//   tarjeteroTotal,
-// };
+// export function prueba() {
+//   console.log("prueba");
+// }

@@ -1,17 +1,6 @@
-// import { data } from "./data";
+// import { prueba } from "../javascript/home.js";
 
-// import {
-//   tarjeta,
-//   tarjetaIndividual,
-//   crearTarjetaEstructuraHtml,
-//   tarjetaIndividalIteracion,
-//   tarjeteroTotal,
-//   ingresarDivsAHtml,
-// } from "../javascript/home";
-
-// crearTarjetaEstructuraHtml(tarjeta);
-// tarjetaIndividalIteracion(tarjetaIndividual);
-// ingresarDivsAHtml(tarjeteroTotal, "contenedor-upcoming");
+// prueba();
 
 function crearTarjetaEstructuraHtml(datos) {
   return ` <div class="card" style="width: 16rem;">
@@ -22,7 +11,7 @@ function crearTarjetaEstructuraHtml(datos) {
 
           <div class="contain-detailes">
             <h3>${datos.price}</h3>
-            <a href="./Assets/pages/details.html" class="btn btn-dark">details</a>
+            <a href="../pages/details.html" class="btn btn-dark">details</a>
           </div>
         </div>
       </div> `;

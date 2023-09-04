@@ -7,7 +7,7 @@ function crearTarjetaEstructuraHtml(datos) {
   
         <div class="contain-detailes">
           <h3>${datos.price}</h3>
-          <a href="./Assets/pages/details.html" class="btn btn-dark">details</a>
+          <a href="../pages/details.html" class="btn btn-dark">details</a>
         </div>
       </div>
     </div> `;
