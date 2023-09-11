@@ -1,53 +1,88 @@
-// function nombreTarjetas() {
-//   const name = [];
+let CapturarLupa = document.getElementById("contenedor-inputbusqueda");
 
-//   for (let iterador of data.events) {
-//     name.push(iterador.name);
-//   }
+let InputBusqueda = document.getElementById("input-busqueda");
 
-//   console.log(name);
-// }
+let contenedorCheckbox = document.getElementById('contenedor-checkbox');
 
-// nombreTarjetas();
+let obtenerCategorias = data.events.map((evento) => evento.category);
 
-// function nombreTarjetasMap() {
-//   const map = data.events.map((tarjeta) => tarjeta.name);
-//   console.log(map);
-// }
+let categorias = [...new Set(obtenerCategorias)];
 
-// nombreTarjetasMap();
 
-function crearTarjetaEstructuraHtml(datos) {
-  return ` <div class="card" style="width: 16rem;">
-    <img src="${datos.image}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">${datos.name}</h5>
-      <p class="card-text">${datos.description}.</p>
+crearTarjeta(data.events);
+imprimirCheckbox(categorias, contenedorCheckbox);
 
-      <div class="contain-detailes">
-        <h3>${datos.price}</h3>
-        <a href="./Assets/pages/details.html" class="btn btn-dark">details</a>
+
+contenedorCheckbox.addEventListener("change", ejecucionDeEventos);
+
+CapturarLupa.addEventListener("click", ejecucionDeEventos)
+
+function ejecucionDeEventos() { //Funciones de procedimientos cuando no tiene return directo, no devuelve ningun dato, se encargan de la ejecucion de otras funciones.
+  let resultadoFiltroCruzado = filtroInputBusqueda(filtroCategoria(data.events), InputBusqueda.value)
+  crearTarjeta(resultadoFiltroCruzado);
+}
+
+
+
+function filtroCheck(array, category) {
+  return array.filter((evento) => (category.includes(evento.category) || category.length == 0))
+}
+
+function filtroCategoria(data) {
+  let check = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map((item) => item.value);
+  let filtrados = filtroCheck(data, check)
+  return filtrados
+}
+
+function filtroInputBusqueda(events, valorInput) {
+  let busqueda = events.filter((eventos) => eventos.name.toLowerCase().includes(valorInput.toLowerCase()))
+  console.log(busqueda)
+  return busqueda
+}
+
+function crearTarjeta(data) {
+
+  let template = "";
+
+  for (let tarjeta of data) {
+    template += `
+  <div class="card d-flex flex-column justify-content-between"  style="width: 16rem;">
+    <img src="${tarjeta.image}" class="card-img-top" alt="...">
+    <div class="card-body  "  >
+      <h5 class="card-title">${tarjeta.name}</h5>
+      <p class="card-text">${tarjeta.description}</p>
       </div>
-    </div>
-  </div> `;
-}
-
-function tarjetaIndividalIteracion(tarjetaIndividual) {
-  let tarjetero = "";
-
-  for (let tarjeta of tarjetaIndividual) {
-    tarjetero = tarjetero + crearTarjetaEstructuraHtml(tarjeta);
+      <div class="contain-details pb-3">
+        <h3> $ ${tarjeta.price}</h3>
+        <a href="./Assets/pages/details.html?id=${tarjeta._id}" class="btn btn-dark">Details</a>
+      </div>
+  </div>
+  `;
   }
-  return tarjetero;
+  document.getElementById("html-div-tarjetas").innerHTML = template;
 }
 
-let tarjeteroTotal = tarjetaIndividalIteracion(data.events);
-
-function ingresarDivsAHtml(totaldedivs, id) {
-  document.getElementById(id).innerHTML = totaldedivs;
+function plantillaCheckbox(check) {
+  return `
+       <div class="form-check ">
+             <input class="form-check-input" type="checkbox" value="${check}" id="${check}" />
+             <label class="form-check-label" for="${check}">${check}</label>
+          </div>
+       `;
 }
-ingresarDivsAHtml(tarjeteroTotal, "html-div-tarjetas");
+function imprimirCheckbox(lista, contenedor) {
+  console.log(lista)
+  let template = "";
+  for (let check of lista) {
+    template += plantillaCheckbox(check);
+  }
+  contenedor.innerHTML += template;
+}
 
-// export function prueba() {
-//   console.log("prueba");
-// }
+
+
+
+
+
+
+

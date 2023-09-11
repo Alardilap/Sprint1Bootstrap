@@ -62,26 +62,14 @@ li :hover {
   margin-right: 20rem;
 }
 
-.conteiner-checkbox {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 2rem;
-}
+
 
 .div-input {
   align-items: center;
   gap: 0.5rem;
 }
 
-.form-check {
-  margin-right: 15px;
-}
-#input-busqueda {
-  padding: 50x;
-}
+
 
 body {
   background-color: white;
@@ -92,7 +80,7 @@ body {
   margin-right: 5px;
 }
 
-.contain-detailes {
+.contain-details {
   display: flex;
   justify-content: space-around;
 }
@@ -101,7 +89,7 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  gap: 3rem;
+  gap: 1.5rem;
   padding: 1rem;
 }
 
@@ -128,12 +116,9 @@ h6 {
 }
 
 .card-img-top {
-  min-height: 30vh;
+  height: 200px;
 }
 
-.card-text {
-  min-height: 2vh;
-}
 
 .bi-search {
   gap: 1rem;
@@ -230,20 +215,6 @@ form {
   color: white;
 }
 
-.form-check {
-  color: #1a2639;
-  font-weight: 600;
-}
-
-.form-check-input:focus {
-  background-color: #1a2639;
-  border: 1px solid #1a2639;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(173, 167, 167, 0.12) 0px -12px 30px,
-    rgba(92, 90, 90, 0.041) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
-    rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
 #input-busqueda:focus {
   outline: none;
   background-color: transparent;
@@ -281,6 +252,10 @@ form {
   margin: 2rem 0rem;
   width: 16rem;
 }
+/* div-input{
+  display: flex;
+  flex-direction: column
+} */
 
 @media (min-width: 768px) {
   form {
@@ -300,8 +275,7 @@ form {
     height: 30rem;
     object-fit: cover;
   }
-
-  /* .card-text {
-    max-height: 10vh;
-  } */
 }
+
+
+
