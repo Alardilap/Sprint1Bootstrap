@@ -4,6 +4,18 @@
   grid-template-rows: auto 1fr auto;
 } */
 
+header{
+  min-height: 10vh;
+}
+
+main{
+  min-height: 80vh;
+}
+
+footer{
+  min-height: 10vh;
+}
+
 .logo {
   width: 10rem;
 }
@@ -279,3 +291,28 @@ form {
 
 
 
+table {
+  width: 50%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+}
+
+th, td {
+  white-space: nowrap;
+}

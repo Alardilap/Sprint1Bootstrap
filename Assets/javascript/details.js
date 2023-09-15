@@ -1,43 +1,19 @@
-const url = window.location.search
-console.log(url)
-
-const parametros = new URLSearchParams(url);
-console.log(parametros)
-
-let idEvento = parametros.get("id")
-console.log(idEvento)
-
-const filtrarId = data.events.find((tarjetaDetalle) => tarjetaDetalle._id === idEvento)
-
-console.log(filtrarId)
 
 
-function crearTarjetaDetalles(data) {
+import { crearTarjetaDetalles } from "./funciones.js"
+let url = "https://mindhub-xj03.onrender.com/api/amazing"
 
-  document.title = `${data.name}`
+fetch(url)
+  .then((res => res.json()))
+  .then(({ events }) => {
+    console.log(events)
+    let id = "tarjetasDetalle"
+    let url = window.location.search
+    let parametros = new URLSearchParams(url);
+    let idEvento = parametros.get("id")
 
-  let template = "";
-  console.log(template)
+    let filtrarId = events.find((tarjetaDetalle) => tarjetaDetalle._id === Number(idEvento))
+    console.log(filtrarId)
+    crearTarjetaDetalles(filtrarId, id)
 
-  for (let tarjeta in data) {
-    template = `
-      <div class="card" id="targeta-detalle">
-      <img id="imagen-detalle" src="${data.image}" class="card-img-top" alt="food_fair">
-
-      <div class="card-body">
-        <h4>${data.name}</h4>
-        <p>${data.description}.</p>
-        <p class="card-text"><strong>Date:</strong>${data.date}</p>
-        <p class="card-text"><strong>Category:</strong>${data.category}</p> <strong></strong>
-        <p class="card-text"><strong>Place:</strong>${data.capacity}</p>
-        <p class="card-text"><strong>Capacity:</strong>${data.capacity}</p>
-        <p class="card-text"><strong>Assistance:</strong>${data.assistance || data.estimate}</p>
-        <h1>${data.price}</h1>
-      </div>
-      </div>
-  `;
-  }
-  document.getElementById("tarjetasDetalle").innerHTML = template;
-}
-
-crearTarjetaDetalles(filtrarId)
+  })
