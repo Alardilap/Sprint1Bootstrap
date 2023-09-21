@@ -1,8 +1,5 @@
 const { createApp } = Vue
 let url = "https://mindhub-xj03.onrender.com/api/amazing"
-
-
-
 createApp({
     data() {
         return {
@@ -14,7 +11,6 @@ createApp({
         }
 
     },
-
     created() {
         fetch(url)
             .then(response => response.json())
@@ -26,8 +22,6 @@ createApp({
     },
 
     methods: {
-
-
     },
     computed: {
         filter() {
