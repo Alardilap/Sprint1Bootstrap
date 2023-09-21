@@ -102,7 +102,7 @@ export function crearTarjetaDetalles(data, id) {
           <p class="card-text"><strong>Place:</strong>${data.capacity}</p>
           <p class="card-text"><strong>Capacity:</strong>${data.capacity}</p>
           <p class="card-text"><strong>Assistance:</strong>${data.assistance || data.estimate}</p>
-          <h1>${data.price}</h1>
+          <h1>$${data.price}</h1>
         </div>
         </div>
     `;
@@ -115,7 +115,7 @@ export function MayorPorcentajeAsistencia(array) {
     let mayorPorcentaje;
 
     for (let evento of array) {
-        let calcular = (evento.assistance * 100) / evento.capacity; //34
+        let calcular = (evento.assistance * 100) / evento.capacity; //57
         if (calcular > eventoMayorPor) {
             eventoMayorPor = calcular;
             mayorPorcentaje = evento;
@@ -171,7 +171,7 @@ export function insertarPlantilla(mayorPorcentaje, menorPorcentaje, mayorCapacid
 export function imprimirSegundaTabla(eventos, id) {
     let datosCompletos = []
 
-    let upCategories = Array.from(new Set(eventos.map(evento => evento.category)))
+    let upCategories = Array.from(new Set(eventos.map(evento => evento.category))) //Array de strings 
 
     let upRevenue = []
     for (let category of upCategories) {
@@ -198,7 +198,7 @@ export function imprimirSegundaTabla(eventos, id) {
     }
 
     datosCompletos.push(upCategories, upRevenue, porcenDeAsis)
-    console.log(datosCompletos)
+
 
     let template = ``
     for (let i = 0; i < datosCompletos[0].length; i++) {

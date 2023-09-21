@@ -96,53 +96,80 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <div class="d-flex justify-content-center">
-      <table>
-        <tbody>
-          <tr>
-            <th colspan="3">Events Statistics</th>
+    <div id="app">
+      <div class="d-flex justify-content-center">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="3">Events Statistics</th>
+            </tr>
+            <tr>
+              <th><strong>with highest % of assistance</strong> </th>
+              <th><strong> with lowest % of assistance </strong></th>
+              <th><strong>with larger capacity </strong> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{mayorPorcentaje}}</td>
+              <td>{{menorPorcentaje}}</td>
+              <td>{{mayorCapacidadArr}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-          </tr>
-          <tr>
-            <td><strong>with highest % of assistance</strong> </td>
-            <td><strong> with lowest % of assistance </strong></td>
-            <td><strong>with larger capacity </strong> </td>
-          </tr>
-          <tr id="insertarMayorPorcentaje">
-          </tr>
+      <div class="d-flex justify-content-center">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="3">Upcomingevents events statistics by category</th>
+            </tr>
+            <tr>
+              <th>Category</th>
+              <th>Revenues</th>
+              <th>% of attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="datos of segundaTabla">
+              <td>{{datos.categoria}}</td>
+              <td>${{datos.ingresos}}</td>
+              <td>{{datos.asistencia}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-      </table>
+
+      <div class="d-flex justify-content-center">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="3">Upcomingevents events statistics by category</th>
+            </tr>
+            <tr>
+              <th>Category</th>
+              <th>Revenues</th>
+              <th>% of attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="datos of terceraTabla">
+              <td>{{datos.categoria}}</td>
+              <td>${{datos.ingresos}}</td>
+              <td>{{datos.asistencia}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-
-    <div class="d-flex justify-content-center">
-      <table>
-        <thead>
-          <tr>
-            <th colspan="3">Upcomingevents events statistics by category</th>
-          </tr>
-        </thead>
-        <tbody id="insertarEventsFuturos">
-        </tbody>
-      </table>
-    </div>
-    <div class="d-flex justify-content-center">
-      <table>
-        <thead>
-          <tr>
-            <th colspan="3">PastEvents events statistics by category</th>
-          </tr>
-        </thead>
-        <tbody id="insertarPast">
-        </tbody>
-      </table>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="module" src="../javascript/stats.js"></script>
-    <script type="module" src="../javascript/funciones.js"> </script>
+
   </main>
   <footer>
     <div class="footer">

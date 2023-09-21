@@ -1,19 +1,32 @@
-
-
-import { crearTarjetaDetalles } from "./funciones.js"
 let url = "https://mindhub-xj03.onrender.com/api/amazing"
+let { createApp } = Vue
 
-fetch(url)
-  .then((res => res.json()))
-  .then(({ events }) => {
-    console.log(events)
-    let id = "tarjetasDetalle"
-    let url = window.location.search
-    let parametros = new URLSearchParams(url);
-    let idEvento = parametros.get("id")
+let app = createApp({
 
-    let filtrarId = events.find((tarjetaDetalle) => tarjetaDetalle._id === Number(idEvento))
-    console.log(filtrarId)
-    crearTarjetaDetalles(filtrarId, id)
+  data() {
+    return {
+      events: [],
+      idEvento: null,
+    }
+  },
 
-  })
+  created() {
+    fetch(url)
+      .then((res => res.json()))
+      .then(({ events }) => {
+        this.events = events
+        let parametros = new URLSearchParams(location.search);
+        this.idEvento = parseInt(parametros.get("id"))
+
+      }).catch(err => console.log(err))
+
+  },
+  computed: {
+    filterId() {
+      return this.events.filter(event => event._id === this.idEvento)
+    }
+  }
+
+
+}).mount("#app")
+

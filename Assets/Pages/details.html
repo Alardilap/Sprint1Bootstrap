@@ -45,10 +45,27 @@
     </nav>
   </header>
   <main>
+    <div id="app">
+      <div class="d-flex align-items-center justify-content-center">
 
-    <div class="d-flex justify-content-center" id="tarjetasDetalle">
+
+        <div v-for="data of filterId" class="card" id="targeta-detalle">
+          <img id="imagen-detalle" :src="data.image" class="card-img-top" :alt="data.name">
+          <div class="card-body">
+            <h4>{{data.name}}</h4>
+            <p>{{data.description}}.</p>
+            <p class="card-text"><strong>Date:</strong>{{data.date}}</p>
+            <p class="card-text"><strong>Category:</strong>{{data.category}}</p> <strong></strong>
+            <p class="card-text"><strong>Place:</strong>{{data.capacity}}</p>
+            <p class="card-text"><strong>Capacity:</strong>{{data.capacity}}</p>
+            <p class="card-text"><strong>Assistance:</strong>{{data.assistance || data.estimate}}</p>
+            <h1>{{data.price}}</h1>
+          </div>
+        </div>
+      </div>
 
     </div>
+
   </main>
 
   <footer>
@@ -58,12 +75,8 @@
       <img class="img-footer" src="../img/whatsapp.png" alt="logo whatsapp">
     </div>
     <h3 class="footer-cohorte">Cohort 51</h3>
-    <script type="module" src="../javascript/data.js"></script>
-    <script type="module" src="../javascript/home.js"> </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="module" src="../javascript/details.js"></script>
-    <script type="module" src="../javascript/upcomingevents.js"></script>
-    <script type="module" src="../javascript/pastevents.js"> </script>
-    <script type="module" src="../javascript/funciones.js"> </script>
   </footer>
 </body>
 

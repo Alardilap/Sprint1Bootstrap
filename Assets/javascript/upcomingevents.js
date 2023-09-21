@@ -1,30 +1,45 @@
-import { crearTarjetaPastUpc, imprimirCheckbox, ejecucionDeEventos } from "./funciones.js"
+
+
+const { createApp } = Vue
 let url = "https://mindhub-xj03.onrender.com/api/amazing"
 
-let contenedorCheckbox = document.getElementById("contenedor-upcoming-checkbox");
-let contenedorCards = "contenedor-upcoming"
-let InputBusqueda = document.getElementById("input-busqueda");
-
-fetch(url)
-  .then((res) => res.json())
-  .then(({ events, currentDate }) => {
-
-    let eventosFuturos = events.filter((evento) => evento.date > currentDate); //7 eventos
-
-    let obtenerCategorias = events.map((evento) => evento.category);
-
-    let categorias = [...new Set(obtenerCategorias)];
-
-    crearTarjetaPastUpc(eventosFuturos, contenedorCards)
-
-    imprimirCheckbox(categorias, contenedorCheckbox)
-
-    contenedorCheckbox.addEventListener("change", () => {
-      ejecucionDeEventos(eventosFuturos, InputBusqueda, contenedorCards)
-    });
-    InputBusqueda.addEventListener("input", () => {
-      ejecucionDeEventos(eventosFuturos, InputBusqueda, contenedorCards)
-    });
 
 
-  }).catch(err => err)
+createApp({
+  data() {
+    return {
+      events: [],
+      checkboxs: [],
+      valueCheckbox: [],
+      valueInputSearch: "",
+      filtered: [],
+      eventsFuture: []
+    }
+
+  },
+
+  created() {
+    fetch(url)
+      .then(response => response.json())
+      .then(({ events, currentDate }) => {
+        this.events = events
+        let obtenerCategorias = this.events.map((evento) => evento.category);
+        this.checkboxs = [...new Set(obtenerCategorias)];
+        this.eventsFuture = this.events.filter((event) => event.date >= currentDate);
+      }).catch(err => err)
+  },
+
+  methods: {
+
+
+  },
+  computed: {
+    filter() {
+      this.filtered = this.eventsFuture.filter(event => event.name.toLowerCase().includes(this.valueInputSearch.toLowerCase())
+        && (this.valueCheckbox.includes(event.category) || this.valueCheckbox.length == 0))
+    }
+  }
+
+},
+
+).mount('#app')

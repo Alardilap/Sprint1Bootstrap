@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
   <header>
     <nav class="navbar navbar-expand-lg bg-color">
       <div class="container-fluid">
@@ -101,26 +102,44 @@
     </div>
 
 
+    <div id="app">
 
-    <div class="d-flex justify-content-center flex-wrap p-4  gap-3">
+      <div id="contenedor-checkbox" class="d-flex justify-content-center gap-3 align-items-center m-3">
+        <div v-for="category of checkboxs" class="form-check ">
+          <input class="form-check-input" type="checkbox" :value="category" :id="category" v-model="valueCheckbox" />
+          <label class="form-check-label" :for="category">{{category}}</label>
+        </div>
 
-      <div id="contenedor-checkbox" class="d-inline-flex flex-wrap gap-3  align-items-center">
-
+        <div class="div-input">
+          <input class="input" id="input-busqueda" type="search" v-model="valueInputSearch" />
+          {{filter}}
+          <label for="input-busqueda">
+            <i id="contenedor-inputbusqueda" class="bi-search"></i> </label>
+        </div>
       </div>
 
-      <div class="div-input ">
-        <input class="input" id="input-busqueda" type="search" />
-        <label for="input-busqueda">
-          <i id="contenedor-inputbusqueda" class="bi-search"></i> </label>
+
+      <div class="d-flex justify-content-center flex-wrap p-4 gap-3 align-items-center">
+        <div v-for="evento of filtered" v-if="filtered.length != 0" class="card" style="width: 16rem;">
+          <img :src="evento.image" class="card-img-top" :alt="evento.name">
+          <div class="card-body">
+            <h5 class="card-title">{{evento.name}}</h5>
+            <p class="card-text">{{evento.description}}</p>
+          </div>
+          <div class="contain-details pb-3">
+            <h3>${{evento.price}}</h3>
+            <a :href="`./Assets/pages/details.html?id=${evento._id}`" class="btn btn-dark">Details</a>
+            {{ filterId}}
+          </div>
+        </div>
       </div>
+      <div class="text-center" v-if="filtered.length == 0">
+        <p>No hay resultados</p>
 
+      </div>
     </div>
-    <div class="container-card" id="html-div-tarjetas">
+    </div>
 
-    </div>
-
-    </div>
-    </div>
 
   </main>
   <footer>
@@ -132,12 +151,14 @@
     <h3 class="footer-cohorte">Cohort 51</h3>
 
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
-  <script src="./Assets/javascript/data.js"></script>
-  <script type="module" src="./Assets/javascript/home.js"></script>
-  <script src="./Assets/javascript/stats.js"> </script>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./Assets/javascript/main.js"> </script>
+
 
 </body>
 
